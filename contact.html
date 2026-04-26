@@ -1,0 +1,306 @@
+<!-- 
+   ================================================================
+   صفحة التواصل (Contact)
+   الوصف: معلومات التواصل مع المتجر ونموذج إرسال الرسائل.
+   ================================================================
+-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا | ليلاك للانجري</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Search Popup -->
+    <div class="search-popup" id="searchPopup">
+        <div class="container">
+            <div class="search-header">
+                <h3>عن ماذا تبحثين؟</h3>
+                <button id="closeSearch"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form class="search-form">
+                <input type="text" placeholder="ابحثي عن (لانجري، دانتيل، بودي سوت...)" autofocus>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="top-bar"><span>🚚 توصيل سري ومجاني لجميع الطلبات فوق 500 جنيه!</span></div>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html">تسوقي</a></li>
+                    <li><a href="products.html" class="open-modal">دليل دلالكِ</a></li>
+                    <li><a href="contact.html" class="active">تواصل معنا</a></li>
+                    <!-- Mobile Extra Content -->
+                    <div class="mobile-nav-extra">
+                        <p class="mobile-nav-tagline">ليلاك.. لأنكِ تستحقين الدلال</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </ul>
+                <div class="logo"><a href="index.html">ليلاك<span>.</span></a></div>
+                <div class="nav-icons">
+                    <a href="#" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="#"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" class="cart-icon" id="cartBtn">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <div class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1590736704728-f4730bb30770?q=80&w=1920&fit=crop');">
+        <div class="page-banner-content">
+            <h1>تواصل معنا</h1>
+            <p>نحن هنا لنساعدكِ في كل استفسار</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            تواصل معنا
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="contact-grid">
+
+                <!-- Info -->
+                <div class="contact-info">
+                    <h2>نسعد بالتواصل معكِ</h2>
+                    <p>لديكِ سؤال عن منتج أو مقاس أو توصيل؟ فريقنا متواجد لخدمتكِ على مدار الساعة. كل استفسار يصلنا يحظى بالاهتمام الكامل.</p>
+
+                    <div class="contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>+20 100 000 0000 — واتساب متاح 24/7</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>@lilac.lingerie — إنستاجرام</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>hello@lilaclingerie.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>ساعات العمل: 10 ص – 12 م يومياً</span>
+                    </div>
+
+                    <a href="https://wa.me/201000000000" class="whatsapp-cta">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        تواصل عبر واتساب الآن
+                    </a>
+
+                    <!-- Social Links -->
+                    <div style="margin-top: 35px;">
+                        <h3 style="margin-bottom: 15px; font-size: 1.1rem;">تابعينا على السوشيال ميديا</h3>
+                        <div class="social-links" style="gap: 15px;">
+                            <a href="#" style="background: rgba(136,14,79,0.1); color: var(--primary-color); width:48px; height:48px;">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="#" style="background: rgba(136,14,79,0.1); color: var(--primary-color); width:48px; height:48px;">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#" style="background: rgba(136,14,79,0.1); color: var(--primary-color); width:48px; height:48px;">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="contact-form">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 25px; color: var(--primary-color);">أرسلي رسالتكِ</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>الاسم الكريم</label>
+                            <input type="text" placeholder="اسمكِ الكريم" required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف / واتساب</label>
+                            <input type="tel" placeholder="01X XXXX XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نوع الاستفسار</label>
+                            <select>
+                                <option value="">اختاري نوع الاستفسار</option>
+                                <option>استفسار عن منتج</option>
+                                <option>تتبع الطلب</option>
+                                <option>استبدال أو إرجاع</option>
+                                <option>استفسار عن التوصيل</option>
+                                <option>أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>رسالتكِ</label>
+                            <textarea placeholder="اكتبي استفسارك هنا..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <i class="fa-solid fa-paper-plane"></i> إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="page-section" style="background: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>أسئلة شائعة</h2>
+                <div class="title-line"></div>
+            </div>
+            <div style="max-width: 750px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.05);">
+                    <div class="faq-q" style="background: var(--primary-color); color: white; padding: 18px 25px; font-weight: 700; font-size: 1.05rem; cursor: pointer;">
+                        🔒 هل التغليف سري فعلاً؟
+                    </div>
+                    <div class="faq-a" style="padding: 20px 25px; background: white; line-height: 1.8; color: var(--text-color);">
+                        نعم بالتأكيد. جميع طلباتنا تُرسل في كرتون عادي بسيط لا يشير بأي شكل لمحتوى الطرد، ولا يُكتب "لانجري" أو اسم المتجر على البوليصة الخارجية.
+                    </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.05);">
+                    <div class="faq-q" style="background: var(--secondary-color); color: white; padding: 18px 25px; font-weight: 700; font-size: 1.05rem;">
+                        🚚 ما هي مدة التوصيل؟
+                    </div>
+                    <div class="faq-a" style="padding: 20px 25px; background: white; line-height: 1.8; color: var(--text-color);">
+                        عادةً يصلكِ الطلب خلال 2-4 أيام عمل. في القاهرة والجيزة قد يصل في يوم العمل التالي. التوصيل مجاني للطلبات التي تتجاوز 500 جنيه.
+                    </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.05);">
+                    <div class="faq-q" style="background: var(--primary-color); color: white; padding: 18px 25px; font-weight: 700; font-size: 1.05rem;">
+                        📏 كيف أختار المقاس الصح؟
+                    </div>
+                    <div class="faq-a" style="padding: 20px 25px; background: white; line-height: 1.8; color: var(--text-color);">
+                        يمكنكِ الاطلاع على <a href="products.html" style="color: var(--primary-color); font-weight: 700;">دليل المقاسات</a> الموجود في صفحة التسوق. في حال التردد، تواصلي معنا مباشرة على واتساب وسنساعدكِ في اختيار المقاس المناسب.
+                    </div>
+                </div>
+                <div class="faq-item" style="border-radius: 15px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.05);">
+                    <div class="faq-q" style="background: var(--secondary-color); color: white; padding: 18px 25px; font-weight: 700; font-size: 1.05rem;">
+                        💳 ما طرق الدفع المتاحة؟
+                    </div>
+                    <div class="faq-a" style="padding: 20px 25px; background: white; line-height: 1.8; color: var(--text-color);">
+                        نقبل الدفع عند الاستلام (Cash on Delivery) في جميع أنحاء مصر، وكذلك الدفع الإلكتروني عبر فودافون كاش وإنستاباي.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container grid-container">
+            <div class="footer-about">
+                <div class="logo">ليلاك<span>.</span></div>
+                <p>وجهتِك الأولى لكل ما يخص الأنوثة والجمال.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>أقسام الموقع</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html">جميع المنتجات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">دليل المقاسات</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="container"><p>© 2025 متجر ليلاك للانجري. جميع الحقوق محفوظة.</p></div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلتك (<span>0</span>)</h3>
+            <button id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">🛍️ سلتك فارغة، ابدأي بالتسوق الآن!</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total"><span>الإجمالي:</span> <span id="cartTotal">0 ج.م</span></div>
+            <button class="btn btn-primary w-100">إتمام الشراء</button>
+        </div>
+    </div>
+
+    <div class="modal" id="sizeModal">
+        <div class="modal-header">
+            <h3>دليل المقاسات</h3>
+            <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <table class="size-table">
+            <thead><tr><th>المقاس</th><th>الصدر (سم)</th><th>الوسط (سم)</th></tr></thead>
+            <tbody>
+                <tr><td>S</td><td>80-85</td><td>60-65</td></tr>
+                <tr><td>M</td><td>85-90</td><td>65-70</td></tr>
+                <tr><td>L</td><td>90-95</td><td>70-75</td></tr>
+                <tr><td>XL</td><td>95-100</td><td>75-80</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact Form Submit
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> تم الإرسال بنجاح!';
+            btn.style.background = '#4CAF50';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال الرسالة';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

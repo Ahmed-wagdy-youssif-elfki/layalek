@@ -1,0 +1,273 @@
+<!-- 
+   ================================================================
+   صفحة البداية - متجر ليلاك (LILAC)
+   الوصف: الصفحة الرئيسية التي تعرض الهوية، المجموعات، وآراء العملاء.
+   تم التطوير واليرمج بواسطة احمد وجدي الفقي  
+   ================================================================
+-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليلاك | متجر اللانجري الفاخر</title>
+    
+    <!-- الروابط الخارجية: الخطوط والأيقونات -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- نافذة البحث المنبثقة -->
+    <div class="search-popup" id="searchPopup">
+        <div class="container">
+            <div class="search-header">
+                <h3>عن ماذا تبحثين؟</h3>
+                <button id="closeSearch"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form class="search-form">
+                <input type="text" placeholder="ابحثي عن (لانجري، دانتيل، بودي سوت...)" autofocus>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= الـتـرويـسة (Header) ================= -->
+    <header id="mainHeader">
+        <!-- شريط الإعلانات المتحرك (يتم تغيير نصوصه عبر JS) -->
+        <div class="top-bar">
+            <span>🚚 توصيل سري ومجاني لجميع الطلبات فوق 500 جنيه!</span>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <!-- زر القائمة الجانبية للموبايل -->
+                <div class="nav-toggle" id="navToggle">
+                    <span></span><span></span><span></span>
+                </div>
+                
+                <!-- روابط التنقل الرئيسية -->
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html">تسوقي</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    
+                    <!-- محتوى إضافي يظهر فقط في قائمة الموبايل -->
+                    <div class="mobile-nav-extra">
+                        <p class="mobile-nav-tagline">ليلاك.. لأنكِ تستحقين الدلال</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </ul>
+                
+                <!-- الشعار (Logo) -->
+                <div class="logo"><a href="index.html">ليلاك<span>.</span></a></div>
+                
+                <!-- أيقونات الأدوات (بحث، حساب، سلة) -->
+                <div class="nav-icons">
+                    <a href="#" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="products.html"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" class="cart-icon" id="cartBtn">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= قـسـم الـتـرحـيـب (Hero) ================= -->
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('img/prodacts/hook 1 .jpg'); background-position: center top;">
+        <div class="hero-content">
+            <h1 class="fade-in">أنوثة تليق <span>بجمالكِ</span></h1>
+            <p class="fade-in">اكتشفي تشكيلتنا الحصرية من اللانجري الفاخر — دانتيل، حرير، ساتان… كل قطعة قصة أنوثة.</p>
+            <div class="hero-btns fade-in">
+                <a href="products.html" class="btn btn-primary">تسوقي الآن</a>
+                <a href="collections.html" class="btn btn-outline">مشاهدة المجموعات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= مـمـيزات الـمـتـجر (Trust Bars) ================= -->
+    <section class="trust-bars">
+        <div class="container flex-row">
+            <div class="trust-item"><i class="fa-solid fa-lock"></i> <span>خصوصية تامة في التغليف</span></div>
+            <div class="trust-item"><i class="fa-solid fa-truck"></i> <span>توصيل سريع للمنزل</span></div>
+            <div class="trust-item"><i class="fa-solid fa-headset"></i> <span>دعم فني 24/7</span></div>
+            <div class="trust-item"><i class="fa-solid fa-star"></i> <span>جودة عالمية مضمونة</span></div>
+        </div>
+    </section>
+
+    <!-- ================= استـعراض الـمـجـموعات (Collections) ================= -->
+    <section class="page-section" style="background: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>استكشفي عالمنا</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="collections-grid">
+                <!-- مجموعة كبيرة (تصميم مميز) -->
+                <div class="collection-item large reveal">
+                    <img src="img/prodacts/6.jpg" alt="طقم نمر بدانتيل">
+                    <div class="collection-content">
+                        <h3>همسات اللدانتيل</h3>
+                        <p>طقم دانتيل لإطلالة ملكية</p>
+                        <a href="collections.html" class="shop-link">تسوقي الدلال ←</a>
+                    </div>
+                </div>
+                
+                <!-- مجموعات فرعية -->
+                <div class="collection-item reveal">
+                    <img src="img/prodacts/3.jpg" alt="طقم نمر بيج">
+                    <div class="collection-content">
+                        <h3>عالم النمر</h3>
+                        <p>تفاصيل تبرز أنوثتكِ</p>
+                        <a href="collections.html" class="shop-link">اكتشفي ←</a>
+                    </div>
+                </div>
+                <div class="collection-item reveal">
+                    <img src="img/prodacts/d.jpg" alt="فستان كحلي فاخر">
+                    <div class="collection-content">
+                        <h3>أناقة الليل</h3>
+                        <p>ليلة العُمر تبدأ بتفاصيل</p>
+                        <a href="collections.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align:center; margin-top: 40px;">
+                <a href="collections.html" class="btn btn-primary">عرض جميع المجموعات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= آراء الـعـمـلاء (Testimonials) ================= -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color:white">ماذا قالوا عن ليلاك؟</h2>
+                <div class="title-line" style="background:white"></div>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <i class="fa-solid fa-quote-right"></i>
+                    <p>"بصراحة الخامات فوق الوصف، والنعومة تجنن. التغليف كان فعلاً سري ومحترم جداً. شكراً ليلاك"</p>
+                    <div class="author">- سارة م. من القاهرة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= قـسـم الـخـصـوصـيـة (Confidentiality) ================= -->
+    <section class="confidentiality">
+        <div class="container">
+            <div class="conf-card">
+                <div class="conf-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <div class="conf-text">
+                    <h2>نقدر خصوصيتكِ تماماً</h2>
+                    <p>جميع طلباتنا تصلكِ في تغليف خارجي بسيط لا يكشف عن المحتوى، وبدون كتابة اسم "لانجري" على البوليصة الخارجية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= تـذيـيـل الـصـفـحة (Footer) ================= -->
+    <footer>
+        <div class="container grid-container">
+            <!-- عن المتجر -->
+            <div class="footer-about">
+                <div class="logo">ليلاك<span>.</span></div>
+                <p>وجهتِك الأولى لكل ما يخص الأنوثة والجمال. ننتقي لكِ أجود أنواع اللانجري العالمية لتتألقي دائماً.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <!-- روابط سريعة -->
+            <div class="footer-links">
+                <h3>أقسام الموقع</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html">جميع المنتجات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            
+            <!-- خدمة العملاء -->
+            <div class="footer-links">
+                <h3>خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="products.html" class="open-modal">دليل المقاسات</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- حقوق النشر -->
+        <div class="bottom-footer">
+            <div class="container">
+                <p>© 2025 متجر ليلاك للانجري. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= سـلـة الـتـسوق (Cart Sidebar) ================= -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلتك (<span>0</span>)</h3>
+            <button id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">🛍️ سلتك فارغة، ابدأي بالتسوق الآن!</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total"><span>الإجمالي:</span> <span id="cartTotal">0 ج.م</span></div>
+            <button class="btn btn-primary w-100">إتمام الشراء</button>
+        </div>
+    </div>
+
+    <!-- ================= دلـيـل الـمـقاسات (Size Modal) ================= -->
+    <div class="modal" id="sizeModal">
+        <div class="modal-header">
+            <h3>دليل المقاسات العالمي</h3>
+            <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <table class="size-table">
+            <thead><tr><th>المقاس</th><th>الصدر (سم)</th><th>الوسط (سم)</th></tr></thead>
+            <tbody>
+                <tr><td>S</td><td>80-85</td><td>60-65</td></tr>
+                <tr><td>M</td><td>85-90</td><td>65-70</td></tr>
+                <tr><td>L</td><td>90-95</td><td>70-75</td></tr>
+                <tr><td>XL</td><td>95-100</td><td>75-80</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- الستارة الخلفية للتعتيم -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- ملف الجافاسكريبت للشرح والوظائف -->
+    <script src="script.js"></script>
+</body>
+</html>

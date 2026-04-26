@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليلاك - نموذج السلة الاحترافي (للمطورين)</title>
+    
+    <!-- خط القاهرة والأميري (نفس الخطوط المستخدمة في المتجر) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ------------------------------------------------
+           1. المتغيرات العامة (نفس متغيرات متجر ليلاك)
+           ------------------------------------------------ */
+        :root {
+            --primary-color: #880E4F;
+            --primary-light: #F06292;
+            --secondary-color: #1A1A1A;
+            --accent-color: #D4AF37;
+            --bg-color: #FAF9F6;
+            --text-color: #333333;
+            --text-muted: #888888;
+            --white: #ffffff;
+            --transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --radius: 20px;
+        }
+
+        /* ------------------------------------------------
+           2. التصفير والتنسيق الأساسي
+           ------------------------------------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ------------------------------------------------
+           3. كارد المنتج (التصميم الأصلي للمتجر)
+           ------------------------------------------------ */
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+            position: relative;
+            width: 320px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-img {
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        /* الأزرار التي تظهر عند التحويم */
+        .product-actions {
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            transition: var(--transition);
+            z-index: 99;
+        }
+
+        .product-card:hover .product-actions {
+            bottom: 20px;
+        }
+
+        .product-actions button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--white);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            color: var(--secondary-color);
+        }
+
+        .product-actions button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* معلومات المنتج */
+        .product-info {
+            padding: 20px 25px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 10;
+        }
+
+        /* ------------------------------------------------
+           4. السلة الجانبية (التصميم الأصلي للمتجر)
+           ------------------------------------------------ */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1500;
+            display: none;
+            backdrop-filter: blur(6px);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -420px;
+            width: 420px;
+            height: 100%;
+            background: var(--white);
+            z-index: 2000;
+            transition: var(--transition);
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 20px 0 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-sidebar.open {
+            left: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .cart-header h3 { font-size: 1.4rem; }
+        
+        .cart-header button {
+            background: none; border: none; font-size: 1.5rem;
+            cursor: pointer; color: var(--text-muted);
+        }
+
+        /* قائمة عناصر السلة */
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 70px;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .cart-item-info { flex: 1; }
+        
+        .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 5px; }
+        
+        .cart-item-price { color: var(--primary-color); font-weight: 800; }
+
+        .cart-footer {
+            border-top: 1px solid #f5f5f5;
+            padding-top: 25px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            width: 100%;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* أيقونة السلة في الهيدر */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+
+    <!-- أيقونة السلة (Trigger) -->
+    <div class="cart-icon" onclick="toggleCart()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- كارد المنتج (نفس تصميم الموقع) -->
+    <div class="product-card">
+        <div class="product-badge">جديد</div>
+        <div class="product-img">
+            <img src="img/prodacts/2.jpg" alt="طقم وردي">
+            <div class="product-actions">
+                <!-- زر الإضافة -->
+                <button onclick="addToCart(1, 'طقم وردي - دانتيل رومانسية', 420, 'img/prodacts/2.jpg')">
+                    <i class="fa-solid fa-cart-plus"></i>
+                </button>
+                <button><i class="fa-regular fa-heart"></i></button>
+            </div>
+        </div>
+        <div class="product-info">
+            <h3>طقم وردي - دانتيل بزهور رومانسية</h3>
+            <div class="price">420 ج.م</div>
+        </div>
+    </div>
+
+    <!-- السلة الجانبية (نفس تصميم الموقع) -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلتك (<span id="countText">0</span>)</h3>
+            <button onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- سيتم تعبئتها بواسطة JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="total">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0 ج.م</span>
+            </div>
+            <button class="btn-primary" onclick="alert('تم التوجه لصفحة إتمام الشراء')">إتمام الشراء</button>
+        </div>
+    </div>
+
+    <!-- الخلفية المعتمة -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <script>
+        /* 
+           ================================================================
+           شرح الجافاسكريبت للسلة (بالتفصيل)
+           ================================================================
+        */
+
+        // 1. مصفوفة السلة: هي المكان الذي تحفظ فيه المنتجات أثناء تصفح المستخدم.
+        let cart = [];
+
+        // 2. دالة فتح/إغلاق السلة: تقوم بتبديل كلاس 'open' لتحريك السلة.
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('open');
+            overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+        }
+
+        // 3. دالة إضافة منتج:
+        // - تأخذ (ID، الاسم، السعر، الصورة).
+        // - تبحث إذا كان المنتج موجود مسبقاً لزيادة الكمية بدلاً من تكراره.
+        function addToCart(id, title, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, title, price, image, quantity: 1 });
+            }
+
+            updateUI(); // تحديث الأرقام والواجهة
+            
+            // فتح السلة تلقائياً عند الإضافة لإشعار المستخدم
+            if (!document.getElementById('cartSidebar').classList.contains('open')) {
+                toggleCart();
+            }
+        }
+
+        // 4. دالة تحديث الواجهة (The Engine):
+        // يقوم بمسح محتوى السلة وإعادة كتابته بناءً على ما هو موجود في المصفوفة.
+        function updateUI() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const countText = document.getElementById('countText');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartItems.innerHTML = ''; // مسح الحالي
+            let total = 0;
+            let count = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+
+                // بناء كود الـ HTML لكل عنصر
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="">
+                        <div class="cart-item-info">
+                            <h4>${item.title}</h4>
+                            <div class="cart-item-price">${item.price} ج.م × ${item.quantity}</div>
+                            <button onclick="removeFromCart(${index})" style="color:red; background:none; border:none; cursor:pointer; font-size:0.8rem; margin-top:5px;">حذف</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // تحديث الأرقام النهائية
+            cartCount.textContent = count;
+            countText.textContent = count;
+            cartTotal.textContent = total + ' ج.م';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div style="text-align:center; padding:50px; color:#aaa;">سلتك فارغة</div>';
+            }
+        }
+
+        // 5. دالة الحذف: تحذف عنصر واحد من المصفوفة بناءً على ترتيبه.
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateUI();
+        }
+    </script>
+</body>
+</html>

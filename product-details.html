@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج | ليلاك للانجري</title>
+    <!-- استيراد الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* تنسيقات إضافية خاصة بصفحة التفاصيل */
+        .product-details-section { padding: 60px 0; }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        
+        .product-gallery { position: sticky; top: 120px; }
+        .main-img { width: 100%; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .main-img img { width: 100%; display: block; }
+        
+        .thumb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px; }
+        .thumb { border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: var(--transition); }
+        .thumb.active { border-color: var(--primary-color); }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        .product-content h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .details-price { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: 25px; }
+        .product-meta { color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem; }
+        
+        .option-group { margin-bottom: 25px; }
+        .option-title { font-weight: 700; margin-bottom: 12px; display: block; }
+        .size-options { display: flex; gap: 10px; }
+        .size-btn { 
+            padding: 10px 20px; border: 2px solid #eee; border-radius: 10px; 
+            background: white; cursor: pointer; transition: var(--transition);
+            font-weight: 600;
+        }
+        .size-btn:hover, .size-btn.active { border-color: var(--primary-color); color: var(--primary-color); }
+
+        .qty-box { display: flex; align-items: center; gap: 20px; margin-top: 40px; }
+        .qty-input { 
+            display: flex; align-items: center; background: #eee; 
+            border-radius: 50px; padding: 5px 15px; gap: 15px;
+        }
+        .qty-input button { background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 5px; }
+        .qty-input span { font-weight: 700; width: 20px; text-align: center; }
+
+        .action-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .btn-add-cart { flex: 1; padding: 18px; font-size: 1.1rem; }
+        .btn-wishlist { width: 60px; height: 60px; border: 2px solid #eee; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; transition: var(--transition); cursor: pointer; }
+        .btn-wishlist:hover { border-color: #ff4d4d; color: #ff4d4d; }
+
+        .product-tabs { margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; }
+        .tabs-header { display: flex; gap: 40px; margin-bottom: 30px; border-bottom: 1px solid #eee; }
+        .tab-link { padding-bottom: 15px; cursor: pointer; font-weight: 700; color: var(--text-muted); position: relative; }
+        .tab-link.active { color: var(--primary-color); }
+        .tab-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--primary-color); }
+        .tab-pane { display: none; line-height: 1.8; color: #555; }
+        .tab-pane.active { display: block; animation: fadeInUp 0.5s ease; }
+
+        @media (max-width: 768px) {
+            .details-grid { grid-template-columns: 1fr; }
+            .product-gallery { position: relative; top: 0; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <div class="top-bar">شحن مجاني للطلبات أكثر من 1000 ج.م | توصيل سريع وسري تماماً</div>
+        <nav class="navbar">
+            <div class="container flex-row">
+                <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+                <div class="logo"><a href="index.html">ليلاك<span>.</span></a></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="products.html">تسوقي الآن</a></li>
+                    <li><a href="collections.html">المجموعات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="#" class="cart-icon" id="cartToggle"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="index.html">الرئيسية</a> <span>/</span> <a href="products.html">جميع المنتجات</a> <span>/</span> <span id="breadcrumb-title">تفاصيل المنتج</span>
+            </div>
+        </div>
+
+        <section class="product-details-section">
+            <div class="container">
+                <div class="details-grid">
+                    <!-- Gallery -->
+                    <div class="product-gallery">
+                        <div class="main-img reveal reveal-zoom">
+                            <img src="img/prodacts/2.jpg" id="mainProductImg" alt="Product Image">
+                        </div>
+                        <div class="thumb-grid reveal reveal-up">
+                            <div class="thumb active"><img src="img/prodacts/2.jpg" alt=""></div>
+                            <div class="thumb"><img src="img/prodacts/images.jpg" alt=""></div>
+                            <div class="thumb"><img src="img/prodacts/3.jpg" alt=""></div>
+                            <div class="thumb"><img src="img/prodacts/4.jpg" alt=""></div>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="product-content reveal reveal-right">
+                        <h1 id="productTitle">طقم وردي - دانتيل بزهور رومانسية</h1>
+                        <div class="details-price" id="productPrice">420 ج.م</div>
+                        
+                        <p class="product-meta">كود المنتج: <span id="productSKU">LILAC-2025-01</span></p>
+                        
+                        <div class="option-group">
+                            <span class="option-title">المقاس:</span>
+                            <div class="size-options">
+                                <button class="size-btn">S</button>
+                                <button class="size-btn active">M</button>
+                                <button class="size-btn">L</button>
+                                <button class="size-btn">XL</button>
+                            </div>
+                        </div>
+
+                        <div class="qty-box">
+                            <span class="option-title">الكمية:</span>
+                            <div class="qty-input">
+                                <button id="qty-minus"><i class="fa-solid fa-minus"></i></button>
+                                <span id="qty-val">1</span>
+                                <button id="qty-plus"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="action-btns">
+                            <button class="btn btn-primary btn-add-cart" id="bigAddToCart">إضافة للسلة <i class="fa-solid fa-cart-plus"></i></button>
+                            <div class="btn-wishlist"><i class="fa-regular fa-heart"></i></div>
+                        </div>
+
+                        <div class="product-tabs">
+                            <div class="tabs-header">
+                                <div class="tab-link active" data-tab="desc">الوصف</div>
+                                <div class="tab-link" data-tab="specs">التفاصيل</div>
+                                <div class="tab-link" data-tab="shipping">الشحن والخصوصية</div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="desc">
+                                    طقم لانجري نسائي فاخر من الدانتيل الناعم، يتميز بتصميم زهور بارزة تضفي لمسة من الرومانسية والأناقة. مصمم بجودة عالية ليمنحكِ الراحة والجمال في آن واحد.
+                                </div>
+                                <div class="tab-pane" id="specs">
+                                    <ul>
+                                        <li>الخامة: دانتيل فرنسي ناعم + قطن 100%</li>
+                                        <li>اللون: الوردي الزهري</li>
+                                        <li>تعليمات الغسيل: غسيل يدوي بماء بارد</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" id="shipping">
+                                    نلتزم بالخصوصية الكاملة. يصلك المنتج في تغليف خارجي بسيط لا يكشف عن المحتوى. الشحن يستغرق من 2-4 أيام عمل لجميع المحافظات.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as main) -->
+    <footer>
+        <div class="container grid-container">
+            <div class="footer-about">
+                <div class="logo">ليلاك<span>.</span></div>
+                <p>وجهتِك الأولى لكل ما يخص الأنوثة والجمال.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <!-- ... links ... -->
+        </div>
+        <div class="bottom-footer">
+            <div class="container">
+                <p>© 2025 متجر ليلاك للانجري. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <!-- ... cart content ... -->
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // منطق التبديل بين التبويبات (Tabs)
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                link.classList.add('active');
+                document.getElementById(link.dataset.tab).classList.add('active');
+            });
+        });
+
+        // منطق الكمية
+        let currentQty = 1;
+        document.getElementById('qty-plus').onclick = () => { currentQty++; document.getElementById('qty-val').textContent = currentQty; };
+        document.getElementById('qty-minus').onclick = () => { if(currentQty > 1) { currentQty--; document.getElementById('qty-val').textContent = currentQty; } };
+
+        // تحميل بيانات المنتج من الرابط (Demo logic)
+        const params = new URLSearchParams(window.location.search);
+        if(params.has('id')) {
+            document.getElementById('productTitle').textContent = params.get('name');
+            document.getElementById('breadcrumb-title').textContent = params.get('name');
+            document.getElementById('productPrice').textContent = params.get('price') + ' ج.م';
+            document.getElementById('mainProductImg').src = params.get('img');
+        }
+
+        // ربط زر الإضافة الكبير بكود السلة العالمي
+        document.getElementById('bigAddToCart').onclick = function() {
+            const id = params.get('id') || 1;
+            const name = document.getElementById('productTitle').textContent;
+            const price = parseInt(document.getElementById('productPrice').textContent);
+            const img = document.getElementById('mainProductImg').src;
+            
+            // استدعاء الدالة العالمية من script.js
+            if(typeof addToCart === 'function') {
+                addToCart(id, name, price, img, this);
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!-- 
+   ================================================================
+   صفحة المجموعات (Collections)
+   الوصف: عرض تصنيفات المنتجات المختلفة (لانجري، فساتين، الخ).
+   ================================================================
+-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعاتنا | ليلاك للانجري</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Search Popup -->
+    <div class="search-popup" id="searchPopup">
+        <div class="container">
+            <div class="search-header">
+                <h3>عن ماذا تبحثين؟</h3>
+                <button id="closeSearch"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form class="search-form">
+                <input type="text" placeholder="ابحثي عن (لانجري، دانتيل، بودي سوت...)" autofocus>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="top-bar"><span>🚚 توصيل سري ومجاني لجميع الطلبات فوق 500 جنيه!</span></div>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html" class="active">مجموعاتنا</a></li>
+                    <li><a href="products.html">تسوقي</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <!-- Mobile Extra Content -->
+                    <div class="mobile-nav-extra">
+                        <p class="mobile-nav-tagline">ليلاك.. لأنكِ تستحقين الدلال</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </ul>
+                <div class="logo"><a href="index.html">ليلاك<span>.</span></a></div>
+                <div class="nav-icons">
+                    <a href="#" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="products.html"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" class="cart-icon" id="cartBtn">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <div class="page-banner" style="background-image: url('img/prodacts/oanar 2 .jpg'); background-position: center;">
+        <div class="page-banner-content">
+            <h1>مجموعاتنا المختارة</h1>
+            <p>تشكيلات فاخرة تجمع الأناقة والأنوثة في كل تفصيلة</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            مجموعاتنا
+        </div>
+    </div>
+
+    <!-- Collection 1: Silk -->
+    <section class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>همسات الحرير</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="collections-grid">
+                <div class="collection-item large">
+                    <img src="img/prodacts/all 1 .jpg" alt="روب ريش ساتان">
+                    <div class="collection-content">
+                        <h3>الروب الملكي</h3>
+                        <p>ناعومة تلامس الحواس</p>
+                        <a href="products.html" class="shop-link">تسوقي الآن ←</a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="img/prodacts/all 2 .jpg" alt="طقم دانتيل ألوان">
+                    <div class="collection-content">
+                        <h3>دانتيل الألوان</h3>
+                        <p>بريق يخطف الأنظار</p>
+                        <a href="products.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="img/prodacts/d.jpg" alt="فستان ليلي">
+                    <div class="collection-content">
+                        <h3>خفة الشيفون</h3>
+                        <p>أنوثة خفيفة كنسمة الهواء</p>
+                        <a href="products.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection 2: Lace -->
+    <section class="page-section" style="background: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>فتنة الدانتيل</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="collections-grid">
+                <div class="collection-item large">
+                    <img src="img/prodacts/1.jpg" alt="طقم نمر أسود">
+                    <div class="collection-content">
+                        <h3>دانتيل فرنسي</h3>
+                        <p>تفاصيل رقيقة كالفن</p>
+                        <a href="products.html" class="shop-link">تسوقي ←</a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="img/prodacts/a.jpg" alt="بودي أسود أبيض">
+                    <div class="collection-content">
+                        <h3>السحر الأسود</h3>
+                        <p>جرأة تحكي الغموض</p>
+                        <a href="products.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="img/prodacts/s.jpg" alt="سيت نبيذي">
+                    <div class="collection-content">
+                        <h3>البياض الرقيق</h3>
+                        <p>نقاء وجمال يتحدان</p>
+                        <a href="products.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection 3: Bridal -->
+    <section class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>أناقة العروس</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="collections-grid">
+                <div class="collection-item large">
+                    <img src="img/prodacts/4.jpg" alt="طقم نمر فاخر">
+                    <div class="collection-content">
+                        <h3>ليلة العُمر</h3>
+                        <p>تفاصيل تليق بأجمل ليلة</p>
+                        <a href="products.html" class="shop-link">تسوقي ←</a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="img/prodacts/2.jpg" alt="طقم وردي بزهور">
+                    <div class="collection-content">
+                        <h3>طقم الجرأة الوردية</h3>
+                        <p>أناقة تليق بالعروس</p>
+                        <a href="products.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="img/prodacts/6.jpg" alt="طقم نمر دانتيل">
+                    <div class="collection-content">
+                        <h3>نعومة الفجر</h3>
+                        <p>ذكريات تدوم للأبد</p>
+                        <a href="products.html" class="shop-link">استكشفي ←</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="testimonials">
+        <div class="container" style="text-align:center">
+            <div class="section-title">
+                <h2 style="color:white">مستعدة لاختيار قطعتك؟</h2>
+                <div class="title-line" style="background:white"></div>
+            </div>
+            <p style="font-size:1.1rem; opacity:0.9; margin-bottom:35px; max-width:600px; margin-left:auto; margin-right:auto;">
+                تسوقي من تشكيلتنا الواسعة من المنتجات الفاخرة المختارة بعناية لكِ
+            </p>
+            <a href="products.html" class="btn btn-primary" style="font-size:1.1rem; padding:16px 50px;">تسوقي الآن</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container grid-container">
+            <div class="footer-about">
+                <div class="logo">ليلاك<span>.</span></div>
+                <p>وجهتِك الأولى لكل ما يخص الأنوثة والجمال.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>أقسام الموقع</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html">جميع المنتجات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#">دليل المقاسات</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="container"><p>© 2025 متجر ليلاك للانجري. جميع الحقوق محفوظة.</p></div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلتك (<span>0</span>)</h3>
+            <button id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">🛍️ سلتك فارغة، ابدأي بالتسوق الآن!</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total"><span>الإجمالي:</span> <span id="cartTotal">0 ج.م</span></div>
+            <button class="btn btn-primary w-100">إتمام الشراء</button>
+        </div>
+    </div>
+
+    <div class="modal" id="sizeModal">
+        <div class="modal-header">
+            <h3>دليل المقاسات</h3>
+            <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <table class="size-table">
+            <thead><tr><th>المقاس</th><th>الصدر (سم)</th><th>الوسط (سم)</th></tr></thead>
+            <tbody>
+                <tr><td>S</td><td>80-85</td><td>60-65</td></tr>
+                <tr><td>M</td><td>85-90</td><td>65-70</td></tr>
+                <tr><td>L</td><td>90-95</td><td>70-75</td></tr>
+                <tr><td>XL</td><td>95-100</td><td>75-80</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+</body>
+</html>

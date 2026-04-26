@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الشراء | ليلاك للانجري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container { padding: 60px 0; }
+        .checkout-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: start; }
+        
+        .checkout-card { background: var(--white); border-radius: var(--radius); padding: 35px; box-shadow: var(--shadow); margin-bottom: 30px; }
+        .checkout-card h2 { font-size: 1.5rem; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        .order-summary { background: #fdfafb; border: 1px solid #eee; }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
+        .summary-item.total { border-top: 2px solid var(--primary-color); border-bottom: none; padding-top: 15px; font-weight: 800; font-size: 1.3rem; color: var(--primary-color); }
+
+        .checkout-item { display: flex; gap: 15px; margin-bottom: 15px; }
+        .checkout-item img { width: 50px; height: 65px; border-radius: 8px; object-fit: cover; }
+        .checkout-item-info { flex: 1; font-size: 0.9rem; }
+        
+        .payment-option { 
+            display: flex; align-items: center; gap: 15px; padding: 20px; 
+            border: 2px solid #eee; border-radius: 12px; margin-bottom: 15px; cursor: pointer; transition: var(--transition);
+        }
+        .payment-option.active { border-color: var(--primary-color); background: rgba(136, 14, 79, 0.05); }
+        .payment-option i { font-size: 1.5rem; color: var(--primary-color); }
+
+        .btn-order { background: var(--primary-color); color: white; width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 800; cursor: pointer; transition: var(--transition); margin-top: 20px; }
+        .btn-order:hover { background: #6a093d; transform: translateY(-3px); }
+
+        @media (max-width: 992px) {
+            .checkout-grid { grid-template-columns: 1fr; }
+            .order-summary { order: -1; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+
+    <header>
+        <nav class="navbar scrolled"> <!-- Always scrolled for checkout -->
+            <div class="container flex-row">
+                <div class="logo"><a href="index.html">ليلاك<span>.</span></a></div>
+                <div class="checkout-steps" style="font-weight: 600; color: var(--text-muted);">
+                    <span style="color: var(--primary-color);">١. الدفع</span> ─── <span>٢. التأكيد</span>
+                </div>
+                <a href="products.html" style="font-size: 0.9rem;"><i class="fa-solid fa-arrow-right"></i> العودة للمتجر</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="checkout-container">
+            <div class="container">
+                <div class="checkout-grid">
+                    <!-- Form Side -->
+                    <div class="checkout-main">
+                        <div class="checkout-card reveal reveal-up">
+                            <h2>تفاصيل الشحن</h2>
+                            <form id="checkoutForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>الاسم الأول</label>
+                                        <input type="text" placeholder="مثلاً: سارة" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>اسم العائلة</label>
+                                        <input type="text" placeholder="مثلاً: أحمد" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>رقم الهاتف (للتواصل عند التوصيل)</label>
+                                    <input type="tel" placeholder="01xxxxxxxxx" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>العنوان بالتفصيل (الشارع / رقم المبنى)</label>
+                                    <input type="text" placeholder="مثلاً: 12 شارع التحرير، الدقي" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>المحافظة</label>
+                                        <select required>
+                                            <option value="">اختر المحافظة...</option>
+                                            <option>القاهرة</option>
+                                            <option>الجيزة</option>
+                                            <option>الإسكندرية</option>
+                                            <!-- Additional cities -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>المدينة / المنطقة</label>
+                                        <input type="text" placeholder="مثلاً: وسط البلد" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="checkout-card reveal reveal-up">
+                            <h2>طريقة الدفع</h2>
+                            <div class="payment-option active">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <div>
+                                    <strong>الدفع عند الاستلام</strong>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">ادفع نقداً لمندوب الشحن عند وصول طلبك</p>
+                                </div>
+                                <i class="fa-solid fa-circle-check" style="margin-right: auto;"></i>
+                            </div>
+                            <div class="payment-option" style="opacity: 0.5; cursor: not-allowed;" title="قريباً">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <div>
+                                    <strong>البطاقة البنكية (قريباً)</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Side -->
+                    <div class="checkout-sidebar">
+                        <div class="checkout-card order-summary reveal reveal-right">
+                            <h2>ملخص الطلب</h2>
+                            <div id="checkoutItemsList">
+                                <!-- Filled by JS -->
+                            </div>
+                            
+                            <div style="margin-top: 25px;">
+                                <div class="summary-item">
+                                    <span>المجموع الفرعي:</span>
+                                    <span id="subtotal">0 ج.م</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>مصاريف الشحن:</span>
+                                    <span id="shippingFee">50 ج.م</span>
+                                </div>
+                                <div class="summary-item total">
+                                    <span>الإجمالي الكلي:</span>
+                                    <span id="grandTotal">0 ج.م</span>
+                                </div>
+                            </div>
+
+                            <button class="btn-order" id="placeOrderBtn">تأكيد طلب الشراء <i class="fa-solid fa-check-double"></i></button>
+                            <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">
+                                <i class="fa-solid fa-shield-halved"></i> طلبك آمن ومشفر بنسبة 100%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #111; padding: 40px 0; color: #666; text-align: center; border-top: 1px solid #222;">
+        <div class="container">
+            <div class="logo" style="margin-bottom: 10px;">ليلاك<span>.</span></div>
+            <p>© 2025 متجر ليلاك للانجري. خصوصية كاملة وجودة مضمونة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // دالة عرض ملخص الطلب في هذا الصفحة فقط
+        function renderCheckoutSummary() {
+            const list = document.getElementById('checkoutItemsList');
+            const subtotalDisplay = document.getElementById('subtotal');
+            const grandTotalDisplay = document.getElementById('grandTotal');
+            
+            // استرجاع السلة من localStorage (نفس المفتاح المستخدم في script.js)
+            let currentCart = JSON.parse(localStorage.getItem('lilac_cart')) || [];
+            
+            if(currentCart.length === 0) {
+                list.innerHTML = '<p style="text-align:center; padding: 20px;">السلة فارغة. يرجى إضافة منتجات أولاً.</p>';
+                return;
+            }
+
+            list.innerHTML = '';
+            let subtotal = 0;
+
+            currentCart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                list.innerHTML += `
+                    <div class="checkout-item">
+                        <img src="${item.image}" alt="">
+                        <div class="checkout-item-info">
+                            <strong>${item.name}</strong>
+                            <div>الكمية: ${item.quantity}</div>
+                            <div style="color: var(--primary-color); font-weight: 700;">${item.price} ج.م</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            subtotalDisplay.textContent = subtotal + ' ج.م';
+            grandTotalDisplay.textContent = (subtotal + 50) + ' ج.م';
+        }
+
+        // تشغيل العرض عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+
+        // زر إرسال الطلب (محاكاة وحفظ في لوحة التحكم)
+        document.getElementById('placeOrderBtn').onclick = function() {
+            const form = document.getElementById('checkoutForm');
+            if(form.reportValidity()) {
+                const currentCart = JSON.parse(localStorage.getItem('lilac_cart')) || [];
+                const subtotal = currentCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const orderData = {
+                    id: 'ORD-' + Date.now(),
+                    name: document.querySelector('input[placeholder*="سارة"]').value + ' ' + document.querySelector('input[placeholder*="أحمد"]').value,
+                    phone: document.querySelector('input[type="tel"]').value,
+                    total: subtotal + 50,
+                    date: new Date().toLocaleDateString('ar-EG'),
+                    status: 'pending',
+                    statusText: 'جديدة'
+                };
+
+                // حفظ الطلب في مصفوفة الطلبات العالمية للوحة التحكم
+                let allOrders = JSON.parse(localStorage.getItem('lilac_orders_v1')) || [];
+                allOrders.push(orderData);
+                localStorage.setItem('lilac_orders_v1', JSON.stringify(allOrders));
+
+                alert('شكراً لكِ! تم استلام طلبك بنجاح. سنقوم بالتواصل معكِ هاتفياً لتأكيد الشحن.');
+                localStorage.removeItem('lilac_cart'); // تفريغ السلة بعد الطلب
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</body>
+
+</html>

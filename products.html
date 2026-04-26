@@ -1,0 +1,365 @@
+<!-- 
+   ================================================================
+   صفحة المنتجات (Shop)
+   الوصف: عرض كافة المنتجات مع ميزة التصفية حسب النوع.
+   ================================================================
+-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسوقي | ليلاك للانجري</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="panr"><p class="t_panr">  موقع تجريبي نسخة من موقع فعلي</p></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Search Popup -->
+    <div class="search-popup" id="searchPopup">
+        <div class="container">
+            <div class="search-header">
+                <h3>عن ماذا تبحثين؟</h3>
+                <button id="closeSearch"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form class="search-form">
+                <input type="text" placeholder="ابحثي عن (لانجري، دانتيل، بودي سوت...)" autofocus>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="top-bar"><span>🚚 توصيل سري ومجاني لجميع الطلبات فوق 500 جنيه!</span></div>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html" class="active">تسوقي</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <!-- Mobile Extra Content -->
+                    <div class="mobile-nav-extra">
+                        <p class="mobile-nav-tagline">ليلاك.. لأنكِ تستحقين الدلال</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </ul>
+                <div class="logo"><a href="index.html">ليلاك<span>.</span></a></div>
+
+                <div class="nav-icons">
+                    <a href="#" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="#"><i class="fa-regular fa-user"></i></a>
+                    <!--            ءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءءء -->
+                    <a href="#" class="cart-icon" id="cartBtn">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <div class="page-banner" style="background-image: url('img/prodacts/panar.jpg');">
+        <div class="page-banner-content">
+            <h1>تسوقي الآن</h1>
+            <p>تشكيلة مختارة بعناية من أرقى أنواع اللانجري</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">الرئيسية</a>
+            <span>›</span>
+            تسوقي
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>اختياراتنا لكِ بعناية</h2>
+                <div class="tab-header">
+                    <div class="tab-btn active" data-target="new">وصل حديثاً</div>
+                    <div class="tab-btn" data-target="best">الأكثر مبيعاً</div>
+                    <div class="tab-btn" data-target="fantasy">عالم الخيال</div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productGrid">
+
+                <!-- Product 1 -->
+                <div class="product-card reveal" data-category="new" data-id="1">
+                    <div class="product-badge">جديد</div>
+                    <div class="product-img">
+                        <img src="img/prodacts/2.jpg" alt="طقم وردي بزهور">
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(1, 'طقم وردي - دانتيل بزهور رومانسية', 420, 'img/prodacts/2.jpg', this)"
+                                title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>طقم وردي - دانتيل بزهور رومانسية</h3>
+                        <div class="price">420 ج.م</div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card reveal" data-category="new" data-id="2">
+                    <div class="product-img">
+                        <img src="img/prodacts/images.jpg" alt="طقم وردي دوار">
+                        <div class="product-actions">
+                            <button class=""
+                                onclick="addToCart(2, 'طقم وردي - بطباعة زهور رقيقة', 380, 'img/prodacts/images.jpg', this)"
+                                title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>طقم وردي - بطباعة زهور رقيقة</h3>
+                        <div class="price">380 ج.م</div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card reveal" data-category="best" data-id="3">
+                    <div class="product-badge">الأكثر مبيعاً</div>
+                    <div class="product-img">
+                        <img src="img/prodacts/1.jpg" alt="طقم نمر أسود">
+                        <div class="product-actions">
+                            <button class=""
+                                onclick="addToCart(3, 'طقم نمر أسود - جرأة وأناقة', 550, 'img/prodacts/1.jpg', this)"
+                                title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>طقم نمر أسود - جرأة وأناقة</h3>
+                        <div class="price">550 ج.م</div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card reveal" data-category="best" data-id="4">
+                    <div class="product-badge sale">خصم 25%</div>
+                    <div class="product-img">
+                        <img src="img/prodacts/4.jpg" alt="طقم نمر كبير">
+                        <div class="product-actions">
+                            <button class=""
+                                onclick="addToCart(4, 'طقم نمر فاخر - أناقة جريئة', 480, 'img/prodacts/4.jpg', this)"
+                                title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>طقم نمر فاخر - أناقة جريئة</h3>
+                        <div class="price"><span class="current">480 ج.م</span> <span class="old">640 ج.م</span></div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-category="new" data-id="5">
+                    <div class="product-badge">جديد</div>
+                    <div class="product-img">
+                        <img src="img/prodacts/all 1 .jpg" alt="روب ريش ملون">
+                        <div class="product-actions">
+                            <button class="add-cart" title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>روب ساتان فاخر - بأطراف ريش</h3>
+                        <div class="price">850 ج.م</div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-category="best" data-id="6">
+                    <div class="product-img">
+                        <img src="img/prodacts/all 2 .jpg" alt="طقم دانتيل وردي">
+                        <div class="product-actions">
+                            <button class="add-cart" title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>طقم دانتيل - ألوان وردي وكريمي</h3>
+                        <div class="price">490 ج.م</div>
+                    </div>
+                </div>
+
+                <!-- Fantasy 1 -->
+                <div class="product-card" data-category="fantasy" data-id="7">
+                    <div class="product-badge">خيال</div>
+                    <div class="product-img">
+                        <img src="img/prodacts/a.jpg" alt="بودي أسود أبيض">
+                        <div class="product-actions">
+                            <button class="add-cart" title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>سيت خيال - أسود وأبيض جريء</h3>
+                        <div class="price">680 ج.م</div>
+                    </div>
+                </div>
+
+                <!-- Fantasy 2 -->
+                <div class="product-card reveal" data-category="fantasy" data-id="8">
+                    <div class="product-badge">خيال</div>
+                    <div class="product-img">
+                        <img src="img/prodacts/s.jpg" alt="بودي نبيذي">
+                        <div class="product-actions">
+                            <button class=""
+                                onclick="addToCart(8, 'سيت فاخر - نبيذي بتفاصيل ذهبية', 750, 'img/prodacts/s.jpg', this)"
+                                title="إضافة للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button title="إعجاب"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>سيت فاخر - نبيذي بتفاصيل ذهبية</h3>
+                        <div class="price">750 ج.م</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidentiality -->
+    <section class="confidentiality">
+        <div class="container">
+            <div class="conf-card">
+                <div class="conf-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <div class="conf-text">
+                    <h2>نقدر خصوصيتكِ تماماً</h2>
+                    <p>جميع طلباتنا تصلكِ في تغليف خارجي بسيط لا يكشف عن المحتوى، وبدون كتابة اسم "لانجري" على البوليصة
+                        الخارجية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container grid-container">
+            <div class="footer-about">
+                <div class="logo">ليلاك<span>.</span></div>
+                <p>وجهتِك الأولى لكل ما يخص الأنوثة والجمال.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>أقسام الموقع</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="collections.html">مجموعاتنا</a></li>
+                    <li><a href="products.html">جميع المنتجات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#">تتبع الطلب</a></li>
+                    <li><a href="#" class="open-modal">دليل المقاسات</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="container">
+                <p>© 2025 متجر ليلاك للانجري. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar  open-->
+    <div class="cart-sidebar " id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلتك (<span>0</span>)</h3>
+            <button id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">🛍️ سلتك فارغة، ابدأي بالتسوق الآن!</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total"><span>الإجمالي:</span> <span id="cartTotal">0 ج.م</span></div>
+            <button class="btn btn-primary w-100">إتمام الشراء</button>
+        </div>
+    </div>
+
+    <!-- Size Modal -->
+    <div class="modal" id="sizeModal">
+        <div class="modal-header">
+            <h3>دليل المقاسات العالمي</h3>
+            <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <table class="size-table">
+            <thead>
+                <tr>
+                    <th>المقاس</th>
+                    <th>الصدر (سم)</th>
+                    <th>الوسط (سم)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>S</td>
+                    <td>80-85</td>
+                    <td>60-65</td>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>85-90</td>
+                    <td>65-70</td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td>90-95</td>
+                    <td>70-75</td>
+                </tr>
+                <tr>
+                    <td>XL</td>
+                    <td>95-100</td>
+                    <td>75-80</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
